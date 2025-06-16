@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../db/database");
 
-router.get("/:route_id/busstops", async (req, res) => {
+router.get("/:route_id", async (req, res) => {
     const { route_id } = req.params;
 
     try {
