@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
 
   try {
     const result = await pool.query(
-      `SELECT bus.bus_id, bus.bus_plate, bus.bus_number
+      `SELECT DISTINCT bus.bus_id, bus.bus_plate, bus.bus_number
       FROM trip
       JOIN bus ON trip.bus_id = bus.bus_id
       WHERE trip.route_id = $1`,
