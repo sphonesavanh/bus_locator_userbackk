@@ -3,7 +3,11 @@ const router = express.Router();
 const pool = require("../db/database");
 
 router.get("/", async (req, res) => {
-  const { route_id } = req.query;
+  const route_id = req.query.route_id;
+  console.log(" [busList] route_id: ", route_id);
+  if (!route_id) {
+    return res.status(400).json({ error: "Route ID is required" });
+  }
 
   try {
     const result = await pool.query(
@@ -13,6 +17,7 @@ router.get("/", async (req, res) => {
       WHERE trip.route_id = $1`,
       [route_id]
     );
+    console.log(" [busList] rows: ", result.rows);
     res.json(result.rows);
   } catch {
     console.error("Error retrieving bus list:", err);

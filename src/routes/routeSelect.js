@@ -7,6 +7,7 @@ router.get("/", async (req, res) => {
     const result = await pool.query(
       "SELECT DISTINCT trip.route_id AS id, route.route_name AS name FROM trip JOIN route ON trip.route_id = route.route_id"
     );
+    console.log(result.rows);
     res.json(result.rows);
   } catch {
     console.error("Error retrieving route list:", err);

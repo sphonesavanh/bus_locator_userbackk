@@ -2,9 +2,9 @@ const bcrypt = require("bcrypt");
 const { createUser } = require("../models/userModel");
 
 const signup = async (req, res) => {
-  const { name, email, tel, password } = req.body;
+  const { name, tel, email, password } = req.body;
 
-  if (!name || !email || !tel || !password) {
+  if (!name || !tel || !email || !password) {
     return res.status(400).json({ error: "All fields are required" });
   }
 

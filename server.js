@@ -22,6 +22,6 @@ app.use("/api/routeMap", routeMap);
 app.use("/api/busStopMap", busStopMap);
 
 const PORT = 3000;
-app.listen(PORT, "192.168.1.17", () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
